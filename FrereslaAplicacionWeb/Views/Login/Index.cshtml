@@ -1,0 +1,26 @@
+﻿@model FrereslaAplicacionWeb.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Cuerpo{
+<div>
+    <section id="login-content">
+
+    @using (Html.BeginForm()) {
+             
+        <fieldset>    
+            <legend>                        
+            @Html.TextBoxFor(m => m.UserName)                                             
+            @Html.PasswordFor(m => m.Password)                                                 
+            
+            <input type="submit" value="" id="Btn-Login"/>
+           
+            </legend> 
+            @Html.ValidationSummary()
+        </fieldset>       
+    }
+    </section>
+</div>   
+}

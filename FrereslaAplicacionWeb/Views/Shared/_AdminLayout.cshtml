@@ -1,0 +1,90 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Panel de control Principal | Freresla SAS</title>
+
+        <link rel="stylesheet" href="@Href("~/Content/admin_css/layout.css")" type="text/css" media="screen" />
+        <link rel="stylesheet" href="@Href("~/Content/admin_css/jquery.pnotify.default.css")" type="text/css" media="all" />
+        <link rel="stylesheet" href="@Href("~/Content/admin_css/jquery.pnotify.default.icons.css")" type="text/css" media="all" />
+        <!--[if lt IE 9]><link rel="stylesheet" href="~/rcAdmin/css/ie.css" type="text/css" media="screen" /><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+       <script src="~/Scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+        
+        <script src="@Href("~/Scripts/js/hideshow.js")" type="text/javascript"></script>
+        <script src="@Href("~/Scripts/js/jquery.tablesorter.min.js")" type="text/javascript"></script>
+        <script type="text/javascript" src="@Href("~/Scripts/js/jquery.equalHeight.js")"></script>
+        <script type="text/javascript" src="@Href("~/Scripts/js/jquery.pnotify.js")"></script>
+        
+
+        <!-- JAVASCRIPT DEDICADO A MOSTRAR Y OCULTAR LOS MENUS LATERALES -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".tablesorter").tablesorter();
+            }
+            );
+            $(document).ready(function () {
+                //Cuando la pagina carga...
+                $(".tab_content").hide(); //Oculta todo el contenido
+                $("ul.tabs li:first").addClass("active").show(); //Activa el primer tab
+                $(".tab_content:first").show(); //Muestra el primer grupo
+                //On Click Event
+                $("ul.tabs li").click(function () {
+                    $("ul.tabs li").removeClass("active"); //Quita cualquier "active" class
+                    $(this).addClass("active"); //Agrega "active" class al tab seleccionado
+                    $(".tab_content").hide(); //Ocualta todos los tab de contenido
+                    var activeTab = $(this).find("a").attr("href"); //Encuentra el valor href attribute para identificar el active tab + contenido
+                    $(activeTab).fadeIn(); //oculta ID content activo
+                    return false;
+                });
+            });
+        </script>
+        <!--  FIN JAVASCRIPT DEDICADO A MOSTRAR Y OCULTAR LOS MENUS LATERALES -->
+        <script type="text/javascript">
+            $(function () {
+                $('.column').equalHeight();
+            });
+        </script>
+
+        @RenderSection("head", false)
+    </head>
+
+    <body>
+        <header id="header">
+            <hgroup>
+                <h1 class="site_title"><a id="titulo" href="/rcAdmin">Panel de Control</a></h1>
+                <h2 class="section_title">Administrador de Clientes</h2>
+            </hgroup>
+        </header>
+        <!-- end of header bar -->
+        <section id="secondary_bar">
+            <div class="user">
+                <p>@ViewBag.NombreCompleto</p>
+                
+                <!-- <a class="logout_user" href="#" title="Logout">Logout</a> -->
+            </div>
+            <div class="breadcrumbs_container">
+                <article class="breadcrumbs"><a href="/rcAdmin">Administrador de Clientes</a> <div class="breadcrumb_divider"></div>
+                    <a class="current">@Page.Title </a></article>
+                <!--<article class="breadcrumbs"><a href=" Href("#")"> Notificaciones</a> <div class="breadcrumb_divider"></div></article>-->
+                @RenderSection("barraSecundaria", false)
+            </div>
+        </section>
+        <!-- end of secondary bar -->
+        <aside id="sidebar" class="column">
+            <!-- Sector del Menu -->
+            @RenderSection("menu", false )
+           
+            <!-- Final sector Menu -->
+            <footer>
+                <hr />
+                <p>Implementado por <a href="http://www.alejandromantilla.com" target="_blank">JamC</a> </p>
+                <p id="autorexterno">Copyright &copy; @DateTime.Now.Year | Tema por <a href="http://www.medialoot.com" target="_blank">MediaLoot</a></p>
+            </footer>
+        </aside><!-- end of sidebar -->
+        <!-- Contenido de la Pagina Administrativa -->
+        <!--Renderizar el cuerpo de la pagina-->
+        @RenderBody()
+        <!--Renderizar el cuerpo de la pagina-->
+    </body>
+</html>

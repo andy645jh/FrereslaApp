@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FreresdbModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FreresdbModelStoreContainer">
+    <EntitySet Name="clientes" EntityType="FreresdbModel.Store.clientes" store:Type="Tables" Schema="freresdb" />
+  </EntityContainer>
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="Cedula" Type="varchar" MaxLength="45" />
+    <Property Name="Direccion" Type="varchar" MaxLength="45" />
+    <Property Name="telefono1" Type="varchar" MaxLength="45" />
+    <Property Name="telefono2" Type="varchar" MaxLength="45" />
+    <Property Name="Observaciones" Type="text" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="FechaSistema" Type="timestamp" />
+  </EntityType>
+</Schema>

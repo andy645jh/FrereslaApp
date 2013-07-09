@@ -1,0 +1,106 @@
+﻿@model FrereslaAplicacionWeb.Models.MenuLateralModels
+@{
+    
+    Page.Title = "Administrador de Clientes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section menu{
+   
+    @if(@Model.VerAdministrativas)
+    {
+        <h3>Administrativas</h3>
+        <ul class="toggle">
+            <!--<li class="admin_Principal"><a href=" Href("/rcAdmin")">Principal</a></li>-->
+            @foreach (var item in @Model.listaPermisos)
+            {
+                if (item.IdPermiso == 11 && item.Habilitado == true)
+                {
+                <li class="admin_lineas"><a href="@Href("AdministrarLineas")">Administrar Lineas</a></li>
+                }
+
+                <!--if(item.IdPermiso == 13 && Convert.ToBoolean( item.Habilitado)==true){
+                    <li class="admin_pagos"><a href="Href("AdministrarPagos")">Administrar Productos</a></li>
+                    }-->
+                if (item.IdPermiso == 13 && item.Habilitado == true)
+                {
+                <li class="admin_pagos"><a href="@Href("AdministrarDinero")">Administrar Pagos</a></li>
+                }
+                if (item.IdPermiso == 15 && (item.Habilitado) == true)
+                {
+                <li class="admin_arqueo"><a href="@Href("Arqueo")">Arqueo</a></li>
+                }
+            }
+        </ul>
+    }
+
+    @if(Model.VerParametros)
+    {
+           
+        <h3>Par&aacute;metros</h3>
+        <ul class="toggle">
+            @foreach (var item in @Model.listaPermisos)
+            {
+                if (item.IdPermiso == 1 && item.Habilitado == true)
+                {
+
+                <li class="para_empresa"><a href="@Href("Empresa")">Empresas</a></li>
+                }
+                if (item.IdPermiso == 3 && item.Habilitado == true)
+                {
+
+                <li class="para_cuentas"><a href="@Href("Cuentas")">Cuentas</a></li>
+                }
+                if (item.IdPermiso == 5 && item.Habilitado == true)
+                {
+
+                <li class="para_clientes"><a href="@Href("Clientes")">Clientes</a></li>
+                }
+                if (item.IdPermiso == 17 && item.Habilitado == true)
+                {
+
+                <li class="para_productos"><a href="@Href("Productos")">Productos</a></li>
+                }
+            }
+        </ul>
+    }
+
+    @if(Model.VerUsuarios)
+    {
+       
+        <h3>Usuarios</h3>
+        <ul class="toggle">
+            @foreach (var item in @Model.listaPermisos)
+            {
+                if (item.IdPermiso == 7 && item.Habilitado == true)
+                {
+
+                <li class="user_users"><a href="@Href("UsuarioCrear")">Agregar usuarios</a></li>
+                }
+                if (item.IdPermiso == 8 && item.Habilitado == true)
+                {
+
+                <li class="user_ver"><a href="@Href("Usuarios")">Ver usuarios</a></li>
+                }
+                if (item.IdPermiso == 9 && item.Habilitado == true)
+                {
+
+                <li class="user_permisos"><a href="@Href("PermisosUsuarios")">Permisos usuarios</a></li>
+                }
+            }
+            <!--<li class="user_perfil"><a href="Href("MiPerfil")">Tu perfil</a></li>-->
+        </ul>
+    }
+   
+    <h3>Sesi&oacute;n</h3>
+    <ul class="toggle">
+        <li class="user_perfil"><a href="@Href("MiPerfil")">Tu perfil</a></li>
+        <!--<li class="sesion_cambiar"><a href="Href("ActualizarPass")">Cambiar contrase&ntilde;a</a></li>-->
+        <li class="sesion_cerrar"><a href="@Href("?fc=LogOut")"  onclick="return confirm('Realmente desea Cerrar Sesi&oacute;n?')">Cerrar sesi&oacute;n</a></li>
+    </ul>
+}
+
+@section head{}
+@section barraSecundaria{
+    <h1>Hola </h1>
+    }

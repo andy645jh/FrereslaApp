@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FreresdbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FreresdbEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="clientes" EntityType="FreresdbModel.clientes" />
+  </EntityContainer>
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Cedula" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Direccion" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="telefono1" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="telefono2" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Name="Habilitado" Type="Boolean" Nullable="false" />
+    <Property Name="FechaSistema" Type="DateTime" Precision="0" />
+  </EntityType>
+</Schema>

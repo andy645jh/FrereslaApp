@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section Cuerpo{
+    <!-- slide-->
+     <div style="padding-top:100px;" class="slider-wrapper theme-default">
+    <div id="slider" class="nivoSlider">
+        <img src="@Href("~/Images/slide1.png")" title="Simplifique, optimice y supervise sus procesos de administraci&oacute;n de clientes!" alt="slider image 1" />
+        <img src="@Href("~/Images/slide2.png")" alt="Gesti&oacute;n de Clientes" />
+        <img src="@Href("~/Images/slide3.png")" alt="Administre sus ingresos" />
+    </div>
+</div>
+
+<div class="box">
+    <!--Iniciar Sesion Boton!-->
+    <a id="loginbutton" href="Login"><img alt="Iniciar Sesion!" src="@Href("~/Images/loginbutton.png")" /></a>
+    <!--Iniciar Sesion Boton!-->
+</div>
+}
